@@ -1,0 +1,18 @@
+<launch>
+	<include file="$(find tas)/launch/move_base_carlike_initpose.launch" launch-prefix="gnome-terminal -e"/>
+	<include file="$(find tas)/launch/hardware_16.launch" launch-prefix="gnome-terminal -e"/>
+	<include file="$(find tas)/launch/odom.launch" launch-prefix="gnome-terminal -e"/>
+	<include file="$(find ira_laser_tools)/launch/laserscan_multi_merger.launch" launch-prefix="gnome-terminal -e"/>
+
+
+	<node name="tf_base_to_camera" pkg="tf_camera" type="tf_camera"/>
+	<include file="$(find openni_launch)/launch/openni.launch" />
+	<!-- <include file="$(find usb_cam)/launch/usb_cam-test.launch" /> -->
+	<include file="$(find aruco_detect)/launch/aruco_detect.launch"/>
+	<include file="$(find fiducial_slam)/launch/fiducial_slam.launch"/>
+	<include file="$(find fiducial_slam)/launch/fiducial_rviz.launch"/>
+
+</launch>
+
+
+

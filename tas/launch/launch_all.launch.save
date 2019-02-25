@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+
+<launch>
+  <master auto="start"/>
+  
+  <include file="$(find tas)/launch/hardware_16.launch"/>
+  <include file="$(find tas)/launch/move_base.launch"/>
+</launch>

@@ -1,0 +1,11 @@
+
+<launch>
+
+<!-- Slalom node -->
+<node pkg="slalom" type="slalom_node" name="slalom" output="screen">
+</node>
+
+<!-- Load dynamic parameter -->
+<node pkg="dynamic_reconfigure" name="dynamic_load_slalom" type="dynparam" args="load /slalom $(find slalom)/config/slalom.yaml" />
+
+</launch>

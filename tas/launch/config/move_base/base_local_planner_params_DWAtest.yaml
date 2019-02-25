@@ -1,0 +1,12 @@
+# move_base parameter file
+
+
+DWAPlannerROS:
+  #Independent settings for the local costmap
+ acc_lim_x: 2.5
+ acc_lim_y: 2.5
+ acc_lim_th: 3.2
+ max_vel_x: 0.55
+ min_vel_x: 0.0
+ max_vel_y: 0.1
+ min_vel_y: -0.1

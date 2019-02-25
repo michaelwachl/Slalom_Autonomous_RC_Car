@@ -1,0 +1,6 @@
+<launch>
+<include file="$(find tas)/launch/move_base_carlike.launch" launch-prefix="gnome-terminal -e"/>
+<include file="$(find tas)/launch/hardware_16.launch" launch-prefix="gnome-terminal -e"/>
+<include file="$(find tas)/launch/odom.launch" launch-prefix="gnome-terminal -e"/>
+<include file="$(find ira_laser_tools)/launch/laserscan_multi_merger.launch" launch-prefix="gnome-terminal -e"/>
+</launch>

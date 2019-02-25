@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+
+<launch>
+  <master auto="start"/>
+  <param name="/use_sim_time" value="false"/>
+
+  <!-- run serial connection -->
+  <node name="rosserial_python" pkg="rosserial_python" type="serial_node.py" args="/dev/arduino"/>
+
+  
+ <!-- Run laserscanner at the front -->
+  <node name="hokuyo_front" pkg="urg_node" type="urg_node" respawn="false" output="screen">
+    <!-- Starts up faster, but timestamps will be inaccurate. --> 
+    <!-- Set the port to connect to here -->
+    <param name="serial_port" value="/dev/hokuyo_front"/>
+    <param name="frame_id" value="laser"/> 
+    <param name="calibrate_time" value="false"/>
+    <param name="publish_intensity" value="false"/>
+    <param name="angle_min" type="double" value="-1.57"/>
+    <param name="angle_max" type="double" value="1.57"/>	
+  </node>
+
+ <!-- Run laserscanner at the back -->
+  <node name="hokuyo_back" pkg="urg_node" type="urg_node" respawn="false" output="screen">
+    <!-- Starts up faster, but timestamps will be inaccurate. --> 
+    <!-- Set the port to connect to here -->
+    <param name="serial_port" value="/dev/hokuyo_back"/>
+    <param name="frame_id" value="laser_back"/> 
+    <param name="calibrate_time" value="false"/>
+    <param name="publish_intensity" value="false"/> 
+    <remap from="scan" to="scan_back" />
+  </node>
+
+ <!-- Run xsens driver 
+  <node pkg="xsens_driver" type="mtnode.py" name="xsens_driver" output="screen" >
+    <param name="device" value="/dev/xsens"/>
+    <param name="baudrate" value="115200"/>
+    <param name="timeout" value="0.002"/>
+  	<param name="frame_id" value="/imu"/>
+	<param name="frame_local" value="ENU"/>
+  </node>  --> 
+
+  <!--(Static) transformation for relation between laser frame and base_link frame -->
+  <node pkg="tf" type="static_transform_publisher" name="base_link_to_laser" args="0.28 0.0 0.18 0.0 0.0 0.0 /base_link /laser 40" />
+
+  <node pkg="tf" type="static_transform_publisher" name="base_link_to_back_laser" args="-0.28 0.0 0.10 3.141593 0.0 0.0 /base_link /laser_back 40" />
+
+
+ <!-- IMU static transformation  
+  <node pkg="tf" type="static_transform_publisher" name="base_link_to_imu" args="-0.20 0.0 0.15 0.0 0.0 0.0 /base_link /base_imu 40" /> -->
+
+
+</launch>

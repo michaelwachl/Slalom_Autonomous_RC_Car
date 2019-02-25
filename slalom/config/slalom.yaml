@@ -1,0 +1,17 @@
+#Mode
+ DYNAMIC_MODE_: false
+ GO_OUT_: false
+#trajectory parameter
+ FIRST_DIST_: 1.35
+ CONE_DIST_: 1.85
+ OFF_SET_Y_: 0.45
+ OFF_SET_X_: 0.0
+ OVERSTEERING_ANGLE_: 0 #degrees
+#cone detection parameter
+ X_LIM_MIN_: 0.3
+ X_LIM_MAX_: 2.1 #2m look ahead
+ Y_LIM_MIN_: -1 #+-1m to the sides 
+ Y_LIM_MAX_: 1
+ CLUSTER_TOLERANCE_: 0.04 #4cm
+ CLUSTER_MIN_: 8
+ CLUSTER_MAX_: 25

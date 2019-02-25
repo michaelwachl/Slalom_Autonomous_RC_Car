@@ -1,0 +1,9 @@
+
+<launch>
+
+<!-- Run rviz -->
+<node name="rviz" pkg="rviz" type="rviz" args="-d $(find tas)/shell_scripts/tas_rviz.rviz" output="screen"/>
+
+<node name="rqt_reconfigure" pkg="rqt_reconfigure" type="rqt_reconfigure"/>
+
+</launch>
